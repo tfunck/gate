@@ -1,0 +1,28 @@
+Bootstrap : localimage
+From: root.img
+
+%help
+Help me. I'm in the container.
+
+%setup
+
+# 2. This is how to copy files for >= 2.3
+%post
+    apt update
+    apt install -y libfreetype6
+    wget http://www.opengatecollaboration.org/sites/default/files/Gate-8.2.tar.gz -O gate.tar.gz
+    tar -zxvf gate.tar.gz
+    cd Gate*/
+    mkdir build
+    cd build
+    cmake ..
+    make 
+    make install
+    cd ../../
+    rm -rf gate*
+
+%environment
+    G4ENSDFSTATEDATA=/usr/local/share/Geant4-10.5.1/data/G4ENSDFSTATE2.2 
+    export G4ENSDFSTATEDATA
+
+

@@ -1,0 +1,14 @@
+Bootstrap : localimage
+From: geant4.img
+
+%help
+Help me. I'm in the container.
+
+%setup
+
+# 2. This is how to copy files for >= 2.3
+%post
+    wget https://root.cern/download/root_v6.16.00.Linux-ubuntu18-x86_64-gcc7.3.tar.gz -O root.tar.gz
+    tar -zxvf root.tar.gz
+    cp -r root*/* /usr/
+    rm -rf root*
